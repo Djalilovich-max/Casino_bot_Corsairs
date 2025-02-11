@@ -1,5 +1,15 @@
 import sqlite3
 
+from aiogram import Bot, Dispatcher
+from config import token  # Импортируем token из config.py
+
+# Проверяем, загружен ли токен
+if not token:
+    raise ValueError("Ошибка: TELEGRAM_TOKEN не найден! Убедитесь, что переменная окружения установлена.")
+
+bot = Bot(token=token)
+dp = Dispatcher(bot)
+
 from aiogram import Bot, Dispatcher, types
 from aiogram.contrib.fsm_storage.memory import MemoryStorage
 from aiogram.dispatcher import FSMContext
